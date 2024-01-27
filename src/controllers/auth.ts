@@ -53,7 +53,12 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
+const validateToken = (req: Request, res: Response) => {
+  res.status(200).send({ userId: req.userID });
+};
+
 module.exports = {
   login,
   loginValidators,
+  validateToken,
 };
