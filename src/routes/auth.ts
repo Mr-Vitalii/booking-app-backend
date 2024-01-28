@@ -8,4 +8,6 @@ router.post("/login", ctrl.loginValidators, ctrl.login);
 
 router.get("/validate-token", verifyToken, ctrl.validateToken);
 
+router.post("/logout", ctrl.logout);
+
 export default router;

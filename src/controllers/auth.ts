@@ -54,11 +54,19 @@ const login = async (req: Request, res: Response) => {
 };
 
 const validateToken = (req: Request, res: Response) => {
-  res.status(200).send({ userId: req.userID });
+  res.status(200).send({ userId: req.userId });
+};
+
+const logout = async (req: Request, res: Response) => {
+  res.cookie("auth_token", "", {
+    expires: new Date(0),
+  });
+  res.send();
 };
 
 module.exports = {
   login,
   loginValidators,
   validateToken,
+  logout,
 };
