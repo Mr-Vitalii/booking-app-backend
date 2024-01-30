@@ -1,12 +1,12 @@
 import express from "express";
-import verifyToken from "../middleware/auth";
-const ctrl = require("../controllers/auth");
+import { auth } from "../middleware";
+import * as ctrl from "../controllers/auth";
 
 const router = express.Router();
 
 router.post("/login", ctrl.loginValidators, ctrl.login);
 
-router.get("/validate-token", verifyToken, ctrl.validateToken);
+router.get("/validate-token", auth.verifyToken, ctrl.validateToken);
 
 router.post("/logout", ctrl.logout);
 

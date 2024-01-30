@@ -1,9 +1,9 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
 import User from "../models/user";
 
-const registerValidators = [
+export const registerValidators = [
   check("firstName", "First Name is required").isString(),
   check("lastName", "Last Name is required").isString(),
   check("email", "Email is required").isEmail(),
@@ -13,7 +13,7 @@ const registerValidators = [
 ];
 
 //* /api/users/register
-const register = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
   try {
     const errors = validationResult(req);
 
@@ -51,9 +51,4 @@ const register = async (req: Request, res: Response) => {
     console.log(error);
     res.status(500).send({ message: "Something went wrong" });
   }
-};
-
-module.exports = {
-  register,
-  registerValidators,
 };
