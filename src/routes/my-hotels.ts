@@ -12,3 +12,5 @@ router.post(
   upload.array("imageFiles", 6),
   ctrl.myHotels
 );
+
+export default router;
