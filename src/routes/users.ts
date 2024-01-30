@@ -1,5 +1,5 @@
 import express from "express";
-const ctrl = require("../controllers/user");
+import * as ctrl from "../controllers/user";
 
 const router = express.Router();
 
