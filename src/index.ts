@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/my-hotel", myHotelRoutes);
+app.use("/api/my-hotels", myHotelRoutes);
 
 app.listen(7000, () => {
   console.log("server running on localhost:7000");

@@ -36,7 +36,7 @@ export const myHotels = async (req: Request, res: Response) => {
 
     res.status(201).send(hotel);
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 };
@@ -52,3 +52,12 @@ async function uploadImages(imageFiles: Express.Multer.File[]) {
   const imageUrls = await Promise.all(uploadPromises);
   return imageUrls;
 }
+
+export const getMyHotels = async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find({ userId: req.userId });
+    res.json(hotels);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching hotels" });
+  }
+};

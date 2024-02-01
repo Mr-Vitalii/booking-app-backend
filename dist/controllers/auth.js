@@ -12,11 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.logout = exports.validateToken = exports.login = exports.loginValidators = void 0;
 const express_validator_1 = require("express-validator");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_1 = __importDefault(require("../models/user"));
-const loginValidators = [
+exports.loginValidators = [
     (0, express_validator_1.check)("email", "Email is required").isEmail(),
     (0, express_validator_1.check)("password", "Password with 6 or more characters required").isLength({
         min: 6,
@@ -52,18 +53,15 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ message: "Something went wrong" });
     }
 });
+exports.login = login;
 const validateToken = (req, res) => {
     res.status(200).send({ userId: req.userId });
 };
+exports.validateToken = validateToken;
 const logout = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.cookie("auth_token", "", {
         expires: new Date(0),
     });
     res.send();
 });
-module.exports = {
-    login,
-    loginValidators,
-    validateToken,
-    logout,
-};
+exports.logout = logout;

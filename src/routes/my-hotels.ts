@@ -12,3 +12,7 @@ router.post(
   upload.array("imageFiles", 6),
   ctrl.myHotels
 );
+
+router.get("/", verifyToken, ctrl.getMyHotels);
+
+export default router;
