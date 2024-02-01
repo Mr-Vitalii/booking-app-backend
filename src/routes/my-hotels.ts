@@ -15,4 +15,13 @@ router.post(
 
 router.get("/", verifyToken, ctrl.getMyHotels);
 
+router.get("/:id", verifyToken, ctrl.editMyHotels);
+
+router.put(
+  "/:hotelId",
+  verifyToken,
+  upload.array("imageFiles"),
+  ctrl.updateHotelImages
+);
+
 export default router;
