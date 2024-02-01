@@ -13,4 +13,6 @@ router.post(
   ctrl.myHotels
 );
 
+router.get("/", verifyToken, ctrl.getMyHotels);
+
 export default router;
