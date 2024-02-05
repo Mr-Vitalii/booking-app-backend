@@ -12,6 +12,7 @@ const path_1 = __importDefault(require("path"));
 const cloudinary_1 = require("cloudinary");
 const users_1 = __importDefault(require("./routes/users"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const hotels_1 = __importDefault(require("./routes/hotels"));
 const my_hotels_1 = __importDefault(require("./routes/my-hotels"));
 cloudinary_1.v2.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -31,6 +32,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "../../frontend/
 app.use("/api/users", users_1.default);
 app.use("/api/auth", auth_1.default);
 app.use("/api/my-hotels", my_hotels_1.default);
+app.use("/api/hotels", hotels_1.default);
 app.listen(7000, () => {
     console.log("server running on localhost:7000");
 });
