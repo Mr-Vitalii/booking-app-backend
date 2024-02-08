@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get("/search", ctrl.searchHotels);
 
+router.get("/", ctrl.getHotels);
+
 router.get("/:id", ctrl.hotelValidators, ctrl.getHotel);
 
 router.post(
