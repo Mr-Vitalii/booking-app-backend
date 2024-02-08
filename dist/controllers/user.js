@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.registerValidators = void 0;
+exports.getCurrentUser = exports.register = exports.registerValidators = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const express_validator_1 = require("express-validator");
 const user_1 = __importDefault(require("../models/user"));
@@ -55,3 +55,18 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.register = register;
+const getCurrentUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.userId;
+    try {
+        const user = yield user_1.default.findById(userId).select("-password");
+        if (!user) {
+            return res.status(400).json({ message: "User not found" });
+        }
+        res.json(user);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "something went wrong" });
+    }
+});
+exports.getCurrentUser = getCurrentUser;
