@@ -14,11 +14,6 @@ router.post(
   ctrl.paymentIntent
 );
 
-router.post(
-  "/:hotelId/bookings",
-  verifyToken,
-  ctrl.paymentIntent,
-  ctrl.bookingHotel
-);
+router.post("/:hotelId/bookings", verifyToken, ctrl.bookingHotel);
 
 export default router;
