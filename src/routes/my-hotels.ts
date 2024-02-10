@@ -9,7 +9,7 @@ router.post(
   "/",
   verifyToken,
   ctrl.myHotelValidators,
-  upload.array("imageFiles", 6),
+  upload.array("imageFiles", 10),
   ctrl.myHotels
 );
 
