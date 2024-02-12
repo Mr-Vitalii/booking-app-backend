@@ -3,7 +3,6 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import path from "path";
 import { v2 as cloudinary } from "cloudinary";
 import userRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
