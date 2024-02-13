@@ -60,6 +60,7 @@ export const validateToken = (req: Request, res: Response) => {
 
 export const logout = async (req: Request, res: Response) => {
   res.cookie("auth_token", "", {
+    sameSite: "none",
     expires: new Date(0),
   });
   res.send();
