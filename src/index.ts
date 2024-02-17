@@ -29,8 +29,7 @@ app.use(
     credentials: true,
   })
 );
-
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+app.use(express.static("public"));
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);

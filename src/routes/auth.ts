@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post("/login", ctrl.loginValidators, ctrl.login);
 
+router.post("/google", ctrl.googleLogin);
+
 router.get("/validate-token", auth.verifyToken, ctrl.validateToken);
 
 router.post("/logout", ctrl.logout);
