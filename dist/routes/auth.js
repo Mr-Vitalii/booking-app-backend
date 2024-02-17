@@ -31,6 +31,7 @@ const middleware_1 = require("../middleware");
 const ctrl = __importStar(require("../controllers/auth"));
 const router = express_1.default.Router();
 router.post("/login", ctrl.loginValidators, ctrl.login);
+router.post("/google", ctrl.googleLogin);
 router.get("/validate-token", middleware_1.auth.verifyToken, ctrl.validateToken);
 router.post("/logout", ctrl.logout);
 exports.default = router;

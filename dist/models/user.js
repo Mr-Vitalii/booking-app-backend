@@ -14,13 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const Joi = require("joi");
 const userSchema = new mongoose_1.default.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-});
+    lastName: { type: String },
+    avatar: {
+        type: String,
+        default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    },
+}, { versionKey: false, timestamps: true });
 userSchema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (this.isModified("password")) {
