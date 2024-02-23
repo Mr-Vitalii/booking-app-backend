@@ -24,4 +24,6 @@ router.put(
   ctrl.updateHotelImages
 );
 
+router.delete("/:id", verifyToken, ctrl.deleteMyHotels);
+
 export default router;

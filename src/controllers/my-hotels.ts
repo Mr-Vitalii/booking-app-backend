@@ -105,3 +105,22 @@ export const updateHotelImages = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+export const deleteMyHotels = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const hotelId = id;
+    const result = await Hotel.findByIdAndDelete(hotelId);
+
+    if (!result) {
+      return res.status(404).json({ message: "Hotel not found" });
+    }
+
+    res.json({
+      hotelId,
+      message: "Delete success",
+    });
+  } catch {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
